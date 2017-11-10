@@ -27,8 +27,8 @@ from sklearn import model_selection
 from sklearn.ensemble import AdaBoostClassifier
 
 df = pd.read_csv('OverwatchData.csv')
-train_df = df[:len(df)//2]
-test_df = df[len(df)//2:]
+train_df = df[:len(df)*4//5]
+test_df = df[len(df)*4//5:]
 del(df)
 
 combine = [train_df, test_df]
@@ -46,5 +46,5 @@ for hero in heroes:
     for title in droplist2:
             train_df = train_df.drop(['heroes|stats|competitive|{NAME}|general_stats|{TITLE}'.format(NAME= hero, TITLE= title)], axis=1)
             test_df = test_df.drop(['heroes|stats|competitive|{NAME}|general_stats|{TITLE}'.format(NAME= hero, TITLE= title)], axis=1)
-train_df.to_csv("OWDataTrain.csv", index = False)
-test_df.to_csv("OWDataTest.csv", index = False)
+train_df.to_csv("OWDataTrain5.csv", index = False)
+test_df.to_csv("OWDataTest5.csv", index = False)
